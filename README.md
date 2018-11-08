@@ -3,4 +3,9 @@ Codes for hydroponics system data gathering and processing
 
 Now containing just basic Arduino code.  
   
-In future will be sending data to raspberry pi 3 database and visualise on website and smartphone.  
+Future plans:
+- Save data to database and visualise them (e.g. website, smartphone app, etc.)
+- Develop automated system of environment conditions control (temperature, humidity, nutrients, etc.) 
+
+Website (only Slovak unfortunately)
+http://senzor.robotika.sk/sensorwiki/index.php/Pestovanie_4.0.

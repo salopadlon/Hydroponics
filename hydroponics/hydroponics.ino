@@ -26,9 +26,9 @@
 DHT dht(DHTPIN, DHTTYPE); // Initialize DHT sensor for normal 16mhz Arduino
 
 static PCD8544 lcd;
-float hum;  // Stores air humidity value
-float temp; // Stores air temperature value
-float tempw; // Stores water temperature value
+float humAir;  // Stores air humidity value
+float tempAir; // Stores air temperature value
+float tempWater; // Stores water temperature value
 
 void setup()
 {
@@ -39,19 +39,19 @@ void setup()
 
 void loop()
 {
-      hum = dht.readHumidity(); // Read air humidity
-      temp = dht.readTemperature(); // Read air temperature
+      humAir = dht.readHumidity(); // Read air humidity
+      tempAir = dht.readTemperature(); // Read air temperature
 
       /* Read water temperature 
        * we need to get the real value by mathematic operations based on datasheet */
   
-      tempw = ((float)analogRead(MCPPIN) * 5 / 1024.0) - 0.5; 
-      tempw = tempw / 0.01; 
+      tempWater = ((float)analogRead(MCPPIN) * 5 / 1024.0) - 0.5; 
+      tempWater = tempWater / 0.01; 
 
       //Check if the sensors are reading numeric values
-      if (isnan(temp) || isnan(hum)) {
+      if (isnan(tempAir) || isnan(humAir)) {
         lcd.print("Failed to read from DHT");
-    } else if (isnan(tempw)) {
+    } else if (isnan(tempWater)) {
         lcd.print("Failed to read from MCP");
     } else {
       
@@ -59,19 +59,19 @@ void loop()
       //Set cursor position on display and print on display
       lcd.setCursor(0, 0); 
       lcd.print("Hum: ");
-      lcd.print(hum);
+      lcd.print(humAir);
       lcd.print("%");
 
       //Set cursor position on display and print on display
       lcd.setCursor(0, 2); 
       lcd.print("Temp: ");
-      lcd.print(temp);
+      lcd.print(tempAir);
       lcd.print("C");
 
       //Set cursor position on display and print on display
       lcd.setCursor(0, 4); 
       lcd.print("Water: ");
-      lcd.print(tempw);
+      lcd.print(tempWater);
       lcd.print("C");
     }
 

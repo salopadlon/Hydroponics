@@ -1,5 +1,5 @@
 # Hydroponics
-##Code for hydroponics system data gathering and processing
+## Code for hydroponics system data gathering and processing
 
 Repository also contains dependent libraries
   
